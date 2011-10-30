@@ -415,6 +415,22 @@ Loop
 							WinNotify(Message, "Action")
 						}
 					}
+          else if (Action = "Unzip file")
+          {
+            errcode := unzipFile(file)
+            if errcode
+            {
+							Log("ERROR: Unable to unzip file", "Action")
+							Message = %Message%Unable to print file
+							Notify(Message, "Error")
+							WinNotify(Message, "Error")
+						}
+						else
+						{
+							Notify(Message, "Action")
+							WinNotify(Message, "Action")
+						}
+					}
 					else if (Action = "Custom")
 					{
 						errcode := custom(file, Destination)
@@ -558,8 +574,8 @@ SetVars:
 	NoDefaultNumVerbs = is|is not|is greater than|is greater than or equal|is less than|is less than or equal|
 	DateVerbs = is in the last||is not in the last| ; removed is||is not| for now... needs more work implementing
 	NoDefaultDateVerbs = is in the last|is not in the last|
-	AllActions = Move file||Move file & leave shortcut|Rename file|Send file to Recycle Bin|Delete file|Copy file|Open file|Print file|Custom|
-	AllActionsNoDefault = Move file|Move file & leave shortcut|Rename file|Send file to Recycle Bin|Delete file|Copy file|Open file|Print file|Custom|
+	AllActions = Move file||Move file & leave shortcut|Rename file|Send file to Recycle Bin|Delete file|Copy file|Open file|Print file|Unzip file|Custom|
+	AllActionsNoDefault = Move file|Move file & leave shortcut|Rename file|Send file to Recycle Bin|Delete file|Copy file|Open file|Print file|Unzip file|Custom|
 	SizeUnits = MB||KB
 	NoDefaultSizeUnits = MB|KB|
 	DateUnits = seconds|minutes||hours|days|weeks

@@ -212,3 +212,20 @@ compressFile(file)
 	ifExist, %directory%\%zipname%
 		FileDelete, %directory%\%fullname%
 }
+
+; Function Specification:  unzipFile(file)
+; Unzip the file to a folder of the same name
+; Warning! Does not check the file type! Simply passes the file to 7-zip.
+; Written to mimic the compressFile function above.
+; tylerwayne on Sunday, Oct. 30, 2011
+unzipFile(file)
+{
+  SplitPath, file,fullname,directory,, name
+  newname := name
+  internalErr := RunWait, %A_ScriptDir%\resources\7za.exe x -o"%directory%\%name%" "%directory%\%fullname%",,hide
+  
+  ifExist, %directory%\%name%\
+    FileRecycle, %directory%\%fullname%
+    
+  return internalErr
+}

@@ -809,7 +809,7 @@ CopyRule:
 	IniWrite, %AttribSystem%, rules.ini, %RuleName%, AttribSystem
 	
 	;only need to write these tags if they need a destination
-	if  (GUIAction != "Send file to Recycle Bin") and (GUIAction != "Delete file")
+	if  (GUIAction != "Send file to Recycle Bin") and (GUIAction != "Delete file") and (GUIAction != "Unzip file"
 	{
 		IniWrite, %Destination%, rules.ini, %RuleName%, Destination
 		IniWrite, %Overwrite%, rules.ini, %RuleName%, Overwrite

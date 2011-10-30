@@ -4,6 +4,7 @@
 ; Platform:       Windows
 ; Author:         Adam Pash <adam.pash@gmail.com>
 ; Contributor:	  Matthew Shorts <mshorts@gmail.com>
+; Contributor:    Tyler Wayne <tyler.wayne.dev@gmail.com>
 ;
 ; Script Name:	  gui-rule.ahk
 ;
@@ -401,7 +402,7 @@ SetDestination:
 		GuiControl, 2: Hide, Overwrite
 		GuiControl, 2: Hide, Compress
 	}
-	else if (GUIAction = "Open file") or (GUIAction = "Delete file") or (GUIAction = "Send file to Recycle Bin") or (GUIAction = "Print file")
+	else if (GUIAction = "Open file") or (GUIAction = "Delete file") or (GUIAction = "Send file to Recycle Bin") or (GUIAction = "Print file") or (GUIAction = "Unzip file")
 	{
 		GuiControl, 2: Hide, ActionTo
 		GuiControl, 2: Hide, GUIChooseFolder
@@ -553,7 +554,7 @@ SaveRule:
 	IniWrite, %AttribSystem%, rules.ini, %RuleName%, AttribSystem
 	
 	;only need to write these tags if they need a destination
-	if  (GUIAction != "Send file to Recycle Bin") and (GUIAction != "Delete file")
+	if  (GUIAction != "Send file to Recycle Bin") and (GUIAction != "Delete file") and (GUIAction != "Unzip file")
 	{
 		IniWrite, %GUIDestination%, rules.ini, %RuleName%, Destination
 		IniWrite, %Overwrite%, rules.ini, %RuleName%, Overwrite
