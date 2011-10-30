@@ -221,8 +221,8 @@ compressFile(file)
 unzipFile(file)
 {
   SplitPath, file,fullname,directory,, name
-  newname := name
-  internalErr := RunWait, %A_ScriptDir%\resources\7za.exe x -o"%directory%\%name%" "%directory%\%fullname%",,hide
+  RunWait, %A_ScriptDir%\resources\7za.exe x -o"%directory%\%name%" "%directory%\%fullname%",,hide UseErrorLevel
+  internalErr := %A_LastError%
   
   ifExist, %directory%\%name%\
     FileRecycle, %directory%\%fullname%
